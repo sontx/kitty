@@ -53,8 +53,6 @@
     </Compile>
     <Compile Include="Resources\MaintainMailProvider.cs" />
     <Compile Include="SimpleUploader.cs" />
-    <Compile Include="SQLite.cs" />
-    <Compile Include="SQLiteAsync.cs" />
     <Compile Include="Stash\IStashProvider.cs" />
     <Compile Include="Net\UploadManager.cs" />
     <Compile Include="Stash\StringFactory.cs" />
@@ -73,7 +71,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -83,11 +80,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Db\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="sqlite3.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
