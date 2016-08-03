@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 
-namespace Kitty.Stash
+namespace Kitty.Types.Stash
 {
-    internal interface IStashProvider
+    public interface IStashProvider
     {
         Task<BaseStash[]> GetStashsAsync();
         void DeleteStash(BaseStash stash);

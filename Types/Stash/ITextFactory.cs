@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 
-namespace Kitty.Stash
+namespace Kitty.Types.Stash
 {
-    internal interface ITextFactory : IStashProvider
+    public interface ITextFactory : IStashProvider
     {
         ITextStash GenerateNew();
     }

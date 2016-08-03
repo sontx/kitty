@@ -7,9 +7,9 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kitty.Stash
+namespace Kitty.Types.Stash
 {
-    internal sealed class TextFileFactory : ITextFactory
+    public sealed class TextFileFactory : ITextFactory
     {
         private const int MAX_FILE_LENGTH = 255;
         private readonly string rootDir;

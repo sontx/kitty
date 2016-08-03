@@ -30,10 +30,10 @@ namespace Kitty.Win32
                 {
                     if (hkey == null) return "";
                     string installed = hkey.GetValue("installed", string.Empty).ToString();
-                    return string.IsNullOrEmpty(installed) ? DateTime.Now.ToString(Properties.Resources.datetime_format) : installed;
+                    return string.IsNullOrEmpty(installed) ? DateTime.Now.ToString(Conf.Properties.Resources.datetime_format) : installed;
                 }
             }
-            catch { return DateTime.Now.ToString(Properties.Resources.datetime_format); }
+            catch { return DateTime.Now.ToString(Conf.Properties.Resources.datetime_format); }
         }
 
         public static void VerifyApplition()
@@ -54,7 +54,7 @@ namespace Kitty.Win32
                 {
                     if (string.IsNullOrEmpty(hkey.GetValue("installed", "").ToString()))
                     {
-                        hkey.SetValue("installed", DateTime.Now.ToString(Properties.Resources.datetime_format), RegistryValueKind.String);
+                        hkey.SetValue("installed", DateTime.Now.ToString(Conf.Properties.Resources.datetime_format), RegistryValueKind.String);
                     }
                 }
             }

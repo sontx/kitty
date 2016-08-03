@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Kitty.Stash
+namespace Kitty.Types.Stash
 {
-    internal abstract class BaseStash
+    public abstract class BaseStash
     {
         public object Tag { get; set; }
         public byte[] Content { get; set; }

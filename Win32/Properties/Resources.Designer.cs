@@ -59,14 +59,5 @@ namespace Kitty.Win32.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to HH.mm.ss - dd.MM.yyyy.
-        /// </summary>
-        internal static string datetime_format {
-            get {
-                return ResourceManager.GetString("datetime_format", resourceCulture);
-            }
-        }
     }
 }

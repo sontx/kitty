@@ -1,4 +1,6 @@
-﻿namespace Kitty.Stash
+﻿using Kitty.Types.Stash;
+
+namespace Kitty.Stash
 {
     internal class HistoryStash : BaseStash
     {
@@ -10,7 +12,7 @@
         public override string ToString()
         {
             string browserName = Tag as string;
-            return string.Format("[history.{0}]{1}.sqlite", browserName, Created.ToString(Properties.Resources.datetime_format));
+            return string.Format("[history.{0}]{1}.sqlite", browserName, Created.ToString(Conf.Properties.Resources.datetime_format));
         }
     }
 }

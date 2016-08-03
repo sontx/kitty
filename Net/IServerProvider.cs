@@ -1,10 +1,10 @@
-﻿using Kitty.Stash;
+﻿using Kitty.Types.Stash;
 using System;
 using System.Threading.Tasks;
 
 namespace Kitty.Net
 {
-    internal interface IServerProvider : IDisposable
+    public interface IServerProvider : IDisposable
     {
         Task<bool> PrepareAsync();
         Task<bool> SendAsync(BaseStash[] stashs);

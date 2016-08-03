@@ -117,4 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="datetime_format" xml:space="preserve">
+    <value>HH.mm.ss - dd.MM.yyyy</value>
+  </data>
+  <data name="mail_body" xml:space="preserve">
+    <value>&lt;html&gt;
+&lt;body&gt;
+&lt;table border="0"&gt;
+{0}
+&lt;/table&gt;
+&lt;/body&gt;</value>
+  </data>
+  <data name="mail_body_element" xml:space="preserve">
+    <value>&lt;tr&gt;
+&lt;td  bgcolor="lightgrey"&gt;{0}&lt;/td&gt;
+&lt;td&gt;{1}&lt;/td&gt;
+&lt;/tr&gt;</value>
+  </data>
 </root>

@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Kitty.Stash
+namespace Kitty.Types.Stash
 {
-    internal interface ITextStash : IDisposable
+    public interface ITextStash : IDisposable
     {
         bool IsEmpty { get; }
 

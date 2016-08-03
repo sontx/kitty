@@ -1,4 +1,6 @@
-﻿namespace Kitty.Resources
+﻿using Kitty.Types;
+
+namespace Kitty.Resources
 {
     internal sealed class SubMailProvider : MailProvider
     {

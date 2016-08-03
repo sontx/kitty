@@ -1,5 +1,5 @@
 ﻿using Kitty.Db;
-using Kitty.Stash;
+using Kitty.Types.Stash;
 using Kitty.Win32;
 using System;
 #if DEBUG

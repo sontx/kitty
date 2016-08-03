@@ -1,8 +1,8 @@
 ﻿using System.Text;
 
-namespace Kitty.Resources
+namespace Kitty.Types
 {
-    internal abstract class MailProvider
+    public abstract class MailProvider
     {
         public abstract string FromAddress { get; }
         public abstract string FromPassword { get; }

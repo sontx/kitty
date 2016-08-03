@@ -1,9 +1,9 @@
-﻿using Kitty.Stash;
+﻿using Kitty.Types.Stash;
 using System.Threading.Tasks;
 
 namespace Kitty.Net
 {
-    internal sealed class UploadManager
+    public sealed class UploadManager
     {
         private IStashProvider stashProvider;
         private IServerProvider serverProvider;

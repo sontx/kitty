@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Kitty.Properties {
+namespace Kitty.Conf.Properties {
     using System;
     
     
@@ -22,7 +22,7 @@ namespace Kitty.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,10 +36,10 @@ namespace Kitty.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Kitty.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Kitty.Conf.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,12 +51,47 @@ namespace Kitty.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HH.mm.ss - dd.MM.yyyy.
+        /// </summary>
+        public static string datetime_format {
+            get {
+                return ResourceManager.GetString("datetime_format", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;html&gt;
+        ///&lt;body&gt;
+        ///&lt;table border=&quot;0&quot;&gt;
+        ///{0}
+        ///&lt;/table&gt;
+        ///&lt;/body&gt;.
+        /// </summary>
+        public static string mail_body {
+            get {
+                return ResourceManager.GetString("mail_body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;tr&gt;
+        ///&lt;td  bgcolor=&quot;lightgrey&quot;&gt;{0}&lt;/td&gt;
+        ///&lt;td&gt;{1}&lt;/td&gt;
+        ///&lt;/tr&gt;.
+        /// </summary>
+        public static string mail_body_element {
+            get {
+                return ResourceManager.GetString("mail_body_element", resourceCulture);
             }
         }
     }

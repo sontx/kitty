@@ -1,6 +1,6 @@
-﻿namespace Kitty.Stash
+﻿namespace Kitty.Types.Stash
 {
-    internal class TextStash : BaseStash
+    public class TextStash : BaseStash
     {
         public static string GetRawName(string contentType, long createdTime)
         {
@@ -9,7 +9,7 @@
 
         public override string ToString()
         {
-            return string.Format("[text.keylog]{0}.{1}", Created.ToString(Properties.Resources.datetime_format), "txt");
+            return string.Format("[text.keylog]{0}.{1}", Created.ToString(Conf.Properties.Resources.datetime_format), "txt");
         }
     }
 }

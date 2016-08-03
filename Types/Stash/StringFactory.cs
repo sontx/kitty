@@ -2,9 +2,9 @@
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kitty.Stash
+namespace Kitty.Types.Stash
 {
-    internal sealed class StringFactory : ITextFactory
+    public sealed class StringFactory : ITextFactory
     {
         private ITextStash currentStash = null;
 

