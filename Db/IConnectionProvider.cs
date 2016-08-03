@@ -2,7 +2,7 @@
 
 namespace Kitty.Db
 {
-    internal interface IConnectionProvider
+    public interface IConnectionProvider
     {
         DbConnection CreateConnection();
     }

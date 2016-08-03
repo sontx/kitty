@@ -2,7 +2,7 @@
 
 namespace Kitty.Db
 {
-    internal interface IBrowserHistoryCollector : IBrowserCollector
+    public interface IBrowserHistoryCollector : IBrowserCollector
     {
     }
 }

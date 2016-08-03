@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Kitty.Db
 {
-    internal interface IBrowserCollector
+    public interface IBrowserCollector
     {
         Task<bool> CollectAsync();
     }

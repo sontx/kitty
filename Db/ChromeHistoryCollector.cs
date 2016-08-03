@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace Kitty.Db
 {
-    internal sealed class ChromeHistoryCollector : IBrowserHistoryCollector
+    public sealed class ChromeHistoryCollector : IBrowserHistoryCollector
     {
         private IConnectionProvider inputProvider;
         private IConnectionProvider outputProvider;

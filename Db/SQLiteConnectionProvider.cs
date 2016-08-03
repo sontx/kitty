@@ -3,7 +3,7 @@ using System.Data.SQLite;
 
 namespace Kitty.Db
 {
-    internal sealed class SQLiteConnectionProvider : IConnectionProvider
+    public sealed class SQLiteConnectionProvider : IConnectionProvider
     {
         private readonly string databasePath;
 
