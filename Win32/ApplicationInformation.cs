@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Kitty.Win32
 {
-    internal static class ApplicationInformation
+    public static class ApplicationInformation
     {
         public static string GetVersion()
         {

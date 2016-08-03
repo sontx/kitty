@@ -3,7 +3,7 @@ using System;
 
 namespace Kitty.Win32
 {
-    internal static class SystemInformation
+    public static class SystemInformation
     {
         public static string GetUserName()
         {

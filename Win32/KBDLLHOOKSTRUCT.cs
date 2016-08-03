@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace Kitty.Win32
 {
     [StructLayout(LayoutKind.Sequential)]
-    internal class KBDLLHOOKSTRUCT
+    public class KBDLLHOOKSTRUCT
     {
         public uint vkCode;
         public uint scanCode;
@@ -14,7 +14,7 @@ namespace Kitty.Win32
     }
 
     [Flags]
-    internal enum KBDLLHOOKSTRUCTFlags : uint
+    public enum KBDLLHOOKSTRUCTFlags : uint
     {
         LLKHF_EXTENDED = 0x01,
         LLKHF_INJECTED = 0x10,

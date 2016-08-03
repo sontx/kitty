@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Kitty.Win32
 {
-    internal static class Win32API
+    public static class Win32API
     {
         public delegate long HookProc(int ncode, UIntPtr wParam, IntPtr lParam);
         private const int FORMAT_MESSAGE_ALLOCATE_BUFFER = 0x00000100;
