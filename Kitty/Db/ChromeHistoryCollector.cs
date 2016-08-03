@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Data;
+using System.Data.Common;
 #if DEBUG
 using System.Diagnostics;
 #endif
@@ -27,28 +28,28 @@ namespace Kitty.Db
 
         #region downloads
 
-        private void CreateDownloadTable()
+        private void CreateDownloadTable(DbConnection outputConnection)
         {
-            using (var outputCommand = outputProvider.Connection.CreateCommand())
+            using (var outputCommand = outputConnection.CreateCommand())
             {
                 outputCommand.CommandText = "CREATE TABLE downloads (target_path LONGVARCHAR NOT NULL,total_bytes INTEGER NOT NULL,end_time DATETIME NOT NULL,referrer VARCHAR NOT NULL)";
                 outputCommand.ExecuteNonQuery();
             }
         }
 
-        private void CollectDownloadTable()
+        private void CollectDownloadTable(DbConnection inputConnection, DbConnection outputConnection)
         {
-            using (var inputCommand = inputProvider.Connection.CreateCommand())
-            using (var transaction = outputProvider.Connection.BeginTransaction())
+            using (var inputCommand = inputConnection.CreateCommand())
+            using (var transaction = outputConnection.BeginTransaction())
             {
-                using (var outputCommand = outputProvider.Connection.CreateCommand())
+                using (var outputCommand = outputConnection.CreateCommand())
                 {
                     inputCommand.CommandText = "SELECT target_path, end_time, total_bytes, referrer FROM downloads";
                     using (var reader = inputCommand.ExecuteReader())
                     {
                         if (!reader.HasRows)
                             return;
-                        CreateDownloadTable();
+                        CreateDownloadTable(outputConnection);
 
                         outputCommand.CommandText = "INSERT INTO downloads(target_path, end_time, total_bytes, referrer) VALUES(@target_path,@end_time,@total_bytes,@referrer)";
 
@@ -92,28 +93,28 @@ namespace Kitty.Db
 
         #region downloads_url_chains
 
-        private void CreateDownloadUrlChainsTable()
+        private void CreateDownloadUrlChainsTable(DbConnection outputConnection)
         {
-            using (var outputCommand = outputProvider.Connection.CreateCommand())
+            using (var outputCommand = outputConnection.CreateCommand())
             {
                 outputCommand.CommandText = "CREATE TABLE downloads_url_chains (id INTEGER NOT NULL,chain_index INTEGER NOT NULL,url LONGVARCHAR NOT NULL, PRIMARY KEY (id, chain_index) )";
                 outputCommand.ExecuteNonQuery();
             }
         }
 
-        private void CollectDownloadUrlChainsTable()
+        private void CollectDownloadUrlChainsTable(DbConnection inputConnection, DbConnection outputConnection)
         {
-            using (var inputCommand = inputProvider.Connection.CreateCommand())
-            using (var transaction = outputProvider.Connection.BeginTransaction())
+            using (var inputCommand = inputConnection.CreateCommand())
+            using (var transaction = outputConnection.BeginTransaction())
             {
-                using (var outputCommand = outputProvider.Connection.CreateCommand())
+                using (var outputCommand = outputConnection.CreateCommand())
                 {
                     inputCommand.CommandText = "SELECT * FROM downloads_url_chains";
                     using (var reader = inputCommand.ExecuteReader())
                     {
                         if (!reader.HasRows)
                             return;
-                        CreateDownloadUrlChainsTable();
+                        CreateDownloadUrlChainsTable(outputConnection);
 
                         outputCommand.CommandText = "INSERT INTO downloads_url_chains VALUES(@id,@chain_index,@url)";
 
@@ -151,28 +152,28 @@ namespace Kitty.Db
 
         #region keywork_search
 
-        private void CreateKeyworkSearchTable()
+        private void CreateKeyworkSearchTable(DbConnection outputConnection)
         {
-            using (var outputCommand = outputProvider.Connection.CreateCommand())
+            using (var outputCommand = outputConnection.CreateCommand())
             {
                 outputCommand.CommandText = "CREATE TABLE keyword_search (term LONGVARCHAR NOT NULL)";
                 outputCommand.ExecuteNonQuery();
             }
         }
 
-        private void CollectKeyworkSearchChainsTable()
+        private void CollectKeyworkSearchChainsTable(DbConnection inputConnection, DbConnection outputConnection)
         {
-            using (var inputCommand = inputProvider.Connection.CreateCommand())
-            using (var transaction = outputProvider.Connection.BeginTransaction())
+            using (var inputCommand = inputConnection.CreateCommand())
+            using (var transaction = outputConnection.BeginTransaction())
             {
-                using (var outputCommand = outputProvider.Connection.CreateCommand())
+                using (var outputCommand = outputConnection.CreateCommand())
                 {
                     inputCommand.CommandText = "SELECT term FROM keyword_search_terms";
                     using (var reader = inputCommand.ExecuteReader())
                     {
                         if (!reader.HasRows)
                             return;
-                        CreateKeyworkSearchTable();
+                        CreateKeyworkSearchTable(outputConnection);
 
                         outputCommand.CommandText = "INSERT INTO keyword_search VALUES(@term)";
 
@@ -197,28 +198,28 @@ namespace Kitty.Db
 
         #region urls
 
-        private void CreateUrlTable()
+        private void CreateUrlTable(DbConnection outputConnection)
         {
-            using (var outputCommand = outputProvider.Connection.CreateCommand())
+            using (var outputCommand = outputConnection.CreateCommand())
             {
                 outputCommand.CommandText = "CREATE TABLE urls(url LONGVARCHAR,title LONGVARCHAR,visit_count INTEGER DEFAULT 0 NOT NULL,last_visit_time DATETIME NOT NULL)";
                 outputCommand.ExecuteNonQuery();
             }
         }
 
-        private void CollectUrlTable()
+        private void CollectUrlTable(DbConnection inputConnection, DbConnection outputConnection)
         {
-            using (var inputCommand = inputProvider.Connection.CreateCommand())
-            using (var transaction = outputProvider.Connection.BeginTransaction())
+            using (var inputCommand = inputConnection.CreateCommand())
+            using (var transaction = outputConnection.BeginTransaction())
             {
-                using (var outputCommand = outputProvider.Connection.CreateCommand())
+                using (var outputCommand = outputConnection.CreateCommand())
                 {
                     inputCommand.CommandText = "SELECT url, title, visit_count, last_visit_time FROM urls";
                     using (var reader = inputCommand.ExecuteReader())
                     {
                         if (!reader.HasRows)
                             return;
-                        CreateUrlTable();
+                        CreateUrlTable(outputConnection);
 
                         outputCommand.CommandText = "INSERT INTO urls VALUES(@url, @title, @visit_count, @last_visit_time)";
 
@@ -266,12 +267,16 @@ namespace Kitty.Db
             {
                 try
                 {
-                    inputProvider.Connection.Open();
-                    outputProvider.Connection.Open();
-                    CollectDownloadTable();
-                    CollectDownloadUrlChainsTable();
-                    CollectKeyworkSearchChainsTable();
-                    CollectUrlTable();
+                    using (var inputConnection = inputProvider.CreateConnection())
+                    using (var outputConnection = outputProvider.CreateConnection())
+                    {
+                        inputConnection.Open();
+                        outputConnection.Open();
+                        CollectDownloadTable(inputConnection, outputConnection);
+                        CollectDownloadUrlChainsTable(inputConnection, outputConnection);
+                        CollectKeyworkSearchChainsTable(inputConnection, outputConnection);
+                        CollectUrlTable(inputConnection, outputConnection);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -282,12 +287,6 @@ namespace Kitty.Db
                 }
                 return true;
             });
-        }
-
-        public void Dispose()
-        {
-            inputProvider.Dispose();
-            outputProvider.Dispose();
         }
     }
 }

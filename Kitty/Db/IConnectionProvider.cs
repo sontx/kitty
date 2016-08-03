@@ -1,10 +1,9 @@
-﻿using System;
-using System.Data.Common;
+﻿using System.Data.Common;
 
 namespace Kitty.Db
 {
-    internal interface IConnectionProvider : IDisposable
+    internal interface IConnectionProvider
     {
-        DbConnection Connection { get; }
+        DbConnection CreateConnection();
     }
 }
