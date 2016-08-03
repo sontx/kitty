@@ -35,6 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Browser\History\ChromeHistoryCollector.cs" />
+    <Compile Include="Browser\History\FirefoxHistoryCollector.cs" />
     <Compile Include="Browser\History\IBrowserHistoryCollector.cs" />
     <Compile Include="Browser\IBrowserCollector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
