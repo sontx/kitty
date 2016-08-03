@@ -1,7 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace Kitty.Db
+namespace Kitty.Core.Browser
 {
     public interface IBrowserCollector
     {

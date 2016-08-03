@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace Kitty.Db
+﻿namespace Kitty.Core.Browser.History
 {
     public interface IBrowserHistoryCollector : IBrowserCollector
     {

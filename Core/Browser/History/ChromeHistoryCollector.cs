@@ -2,11 +2,12 @@
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.Common;
+using Kitty.Db;
 #if DEBUG
 using System.Diagnostics;
 #endif
 
-namespace Kitty.Db
+namespace Kitty.Core.Browser.History
 {
     public sealed class ChromeHistoryCollector : IBrowserHistoryCollector
     {
