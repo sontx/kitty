@@ -34,6 +34,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Stash\BaseStash.cs" />
+    <Compile Include="Stash\HistoryStash.cs" />
     <Compile Include="Stash\IStashProvider.cs" />
     <Compile Include="MailProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

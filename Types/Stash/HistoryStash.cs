@@ -1,8 +1,6 @@
-﻿using Kitty.Types.Stash;
-
-namespace Kitty.Stash
+﻿namespace Kitty.Types.Stash
 {
-    internal class HistoryStash : BaseStash
+    public class HistoryStash : BaseStash
     {
         public static string GetRawName(string browserName, long createdTime)
         {
