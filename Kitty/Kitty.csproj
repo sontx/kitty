@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationMaintain.cs" />
-    <Compile Include="Keylogger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -52,7 +51,6 @@
     </Compile>
     <Compile Include="Resources\MaintainMailProvider.cs" />
     <Compile Include="SimpleUploader.cs" />
-    <Compile Include="Stash\HistoryStash.cs" />
     <Compile Include="Resources\MainMailProvider.cs" />
     <Compile Include="Resources\SubMailProvider.cs" />
   </ItemGroup>
@@ -73,6 +71,10 @@
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{b4166072-e775-4d69-bac1-678733020a65}</Project>
       <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Db\Db.csproj">
+      <Project>{9cfd3697-3d8b-4e52-a268-d6f4c8c0f9f1}</Project>
+      <Name>Db</Name>
     </ProjectReference>
     <ProjectReference Include="..\Net\Net.csproj">
       <Project>{b822f57c-0b34-4448-89bc-3a607cd02422}</Project>
