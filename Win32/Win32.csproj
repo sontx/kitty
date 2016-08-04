@@ -42,6 +42,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RegistryUtils.cs" />
     <Compile Include="SystemInformation.cs" />
     <Compile Include="Win32API.cs" />
   </ItemGroup>
