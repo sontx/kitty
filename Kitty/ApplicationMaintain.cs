@@ -1,6 +1,5 @@
 ﻿using Kitty.Net;
 using Kitty.Resources;
-using Kitty.Stash;
 using Kitty.Types.Stash;
 using System;
 using System.Threading.Tasks;
