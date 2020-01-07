@@ -11,6 +11,8 @@ namespace Kitty.Stash
 {
     internal sealed class TextFileFactory : ITextFactory
     {
+        public event EventHandler ReadyToUpload;
+
         private const int MAX_FILE_LENGTH = 255;
         private readonly string rootDir;
 
@@ -35,6 +37,7 @@ namespace Kitty.Stash
             string srcFile = textFile.FilePath;
             string desFile = Path.Combine(rootDir, Path.GetFileName(srcFile));
             File.Move(srcFile, desFile);
+            ReadyToUpload?.Invoke(this, e);
 #if DEBUG
             Debug.WriteLine(File.ReadAllText(desFile));
 #endif

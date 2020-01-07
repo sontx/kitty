@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace Kitty.Stash
+﻿namespace Kitty.Stash
 {
     internal interface ITextFactory : IStashProvider
     {

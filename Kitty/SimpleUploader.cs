@@ -20,7 +20,6 @@ namespace Kitty
             {
                 using (var serverProvider = new SmtpEmailProvider())
                 {
-                    serverProvider.MailProviders.Add(new MainMailProvider());
                     serverProvider.MailProviders.Add(new SubMailProvider());
                     var uploadManager = new UploadManager(stashProvider, serverProvider);
                     var result = await uploadManager.UploadAsync();

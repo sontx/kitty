@@ -135,7 +135,7 @@ namespace Kitty.Net
                     if (Send(subject, body, stashs, provider))
                     {
 #if DEBUG
-                        Debug.WriteLine("Send mail sussessful.");
+                        Debug.WriteLine("Send mail successfully.");
 #endif
                         return true;
                     }
